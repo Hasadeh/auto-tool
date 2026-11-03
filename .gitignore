@@ -1,0 +1,91 @@
+# ---------- 学习参考（DUElost 克隆，勿提交） ----------
+/automation-toolkit/
+
+# ---------- 根目录临时/未整理工作副本（迁入 python-tools/ 后再纳入版本） ----------
+/stability_Start-Log-Scan_20261020/
+/check_language&country_list/
+
+# ---------- 密钥与本地配置 ----------
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.key
+secrets/
+**/credentials.json
+**/*secret*
+**/.env.local
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+eggs/
+.eggs/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+.venv/
+venv/
+ENV/
+venv*/
+
+# ---------- Java / Android / Node ----------
+*.class
+*.jar
+*.war
+*.ear
+target/
+.gradle/
+*.apk
+*.ap_
+*.dex
+*.aab
+local.properties
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# ---------- IDE / OS ----------
+.idea/
+.vscode/
+*.iml
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# ---------- 数据与产物（工具仓只存代码与样例） ----------
+*.xlsx
+*.xls
+*.zip
+*.rar
+*.7z
+backup/
+result/
+results/
+out/
+output/
+logs/
+tmp/
+temp/
+*.tmp
+*.bak
+*.cache
+dump.hprof
+
+# ---------- 本仓运行时 ----------
+.runtime/
+.worktrees/
+.ace-tool/
+.claude/
+nul

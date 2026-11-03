@@ -1,0 +1,5 @@
+{
+  "_comment": "复制为 config.json 或本地私有配置后填写；勿提交含密钥的真实文件",
+  "example_endpoint": "https://example.invalid",
+  "example_token": "REPLACE_ME"
+}
