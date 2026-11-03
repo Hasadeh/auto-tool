@@ -1,0 +1,105 @@
+{
+  // 结果文件名前缀，例如 X1102D_202609092001.xlsx
+  "project": "X1102D",
+  // OOBE 开机向导包名，换项目时按实际包名改
+  "package": "com.transsion.overlaysuw",
+
+  // 各核对界面的控件配置。换项目主要改这里的 resource-id / 文案 / Activity
+  "screens": {
+    // 开机向导：语言列表页
+    "oobe_language": {
+      // 语言列表容器，用于滑动
+      "list_container_id": "com.transsion.overlaysuw:id/rv_language",
+      // 每一项语言名称的控件，采集 text 与 Excel 比对
+      "item_text_id": "com.transsion.overlaysuw:id/language_name",
+      // 核对完语言后进入国家页时要点的「下一步」
+      "next_button": {
+        // 优先按 resource-id 点击；找不到再按 text
+        "resource_id": "com.transsion.overlaysuw:id/suw_navbar_next",
+        "text": "下一步"
+      },
+      // 等待该界面出现的超时秒数
+      "wait_timeout": 15
+    },
+    // 开机向导：国家列表页
+    "oobe_country": {
+      // 国家列表容器，用于滑动
+      "list_container_id": "com.transsion.overlaysuw:id/rv_country",
+      // 每一项国家名称的控件，采集 text 与 Excel 比对
+      "item_text_id": "com.transsion.overlaysuw:id/country_name",
+      "wait_timeout": 15
+    },
+    // 系统设置：添加语言页
+    "settings_add_language": {
+      // 打开该页面的 Activity，格式：包名/类名
+      "activity": "com.android.settings/com.android.settings.localepicker.LocalePickerWithRegionActivity",
+      // 添加语言列表容器
+      "list_container_id": "com.android.settings:id/recycler_view",
+      // 每一项语言名称的控件
+      "item_text_id": "com.android.settings:id/locale",
+      "wait_timeout": 15
+    }
+  },
+
+  // 跳过开机向导。核对完 OOBE 后执行，再进入系统添加语言页
+  "skip_oobe": {
+    // 是否先执行 adb root。失败时会继续尝试后面的命令
+    "need_root": true,
+    // 按顺序通过 adb shell 执行。换项目若跳过方式不同，改这里
+    "commands": [
+      "settings put secure user_setup_complete 1",
+      "settings put global device_provisioned 1",
+      "settings put system system_locales en-US",
+      "input keyevent 4",
+      "am start -a android.intent.action.MAIN -c android.intent.category.HOME"
+    ]
+  },
+
+  // Excel 读写规则。列号从 1 开始：1=A，2=B，3=C，4=D
+  "excel": {
+    // 语言表 sheet 名
+    "language_sheet": "语言列表",
+    // 国家表 sheet 名
+    "country_sheet": "国家列表",
+    // 数据起始行，第 1 行是表头，从第 2 行开始核对
+    "data_start_row": 2,
+    // 语言比对列。当前 A 列是手机上显示的语言名
+    "name_column": 1,
+    // 国家比对列。1=A 中文，2=B 英文。真机国家名是中文就改成 1，是英文就改成 2
+    "country_name_column": 1,
+    // OOBE 核对结果列。语言表和国家表都写这一列（C 列）
+    "result_column": 3,
+    // 系统添加语言核对结果列（语言表 D 列）
+    "settings_result_column": 4
+  },
+
+  // 结果单元格底色，十六进制 RGB，不要加 #
+  "colors": {
+    "存在": "00B050",
+    "不存在-请人工核对": "FF0000",
+    "多余-请人工核对": "FFFF00"
+  },
+
+  // 列表滑动参数。控件被顶栏/底栏挡住时，可调 start_ratio / end_ratio
+  "swipe": {
+    // 起点相对列表高度的比例，0 是顶部，1 是底部。当前从 65% 处向上滑
+    "start_ratio": 0.65,
+    // 终点相对列表高度的比例
+    "end_ratio": 0.25,
+    // 单次滑动持续时间（秒），越大滑得越慢
+    "duration": 0.4,
+    // 每次滑动后等待列表稳定的秒数
+    "settle_seconds": 0.5,
+    // 最多滑动次数，防止死循环
+    "max_swipes": 100,
+    // 连续多少次没有新项就认为已经滑到底
+    "no_new_limit": 2
+  },
+
+  // 写入 Excel 的状态文案，一般不用改，改了请同步到 colors 参数
+  "status_texts": {
+    "exist": "存在",
+    "missing": "不存在-请人工核对",
+    "extra": "多余-请人工核对"
+  }
+}

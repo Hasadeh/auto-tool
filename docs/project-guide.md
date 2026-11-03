@@ -10,6 +10,7 @@
 
 | 日期 | 变更内容 |
 |------|----------|
+| 2026-11-03 | 收录 `python-tools/check_language&country_list`（语言/国家列表核对） |
 | 2026-11-03 | 初始化本地仓骨架：目录分类、入库规范、脱敏清单；`automation-toolkit/` 作只读学习参考 |
 
 ---
@@ -48,12 +49,11 @@ auto-tool/
 
 | 模块路径 | 语言 | 职责 | 状态 |
 |----------|------|------|------|
-| （暂无） | — | 将现有工具迁入 `python-tools/` 等目录后在此登记 | 待迁入 |
+| [python-tools/check_language&country_list](../python-tools/check_language&country_list/README.md) | Python | OOBE/设置语言与国家列表核对，输出着色 Excel | 活跃 |
 
 待迁入候选（当前在根目录，已被 gitignore，需整理后再纳入版本库）：
 
 - `stability_Start-Log-Scan_20261020/` → 建议目标：`python-tools/stability_Start-Log-Scan/`
-- `check_language&country_list/` → 建议目标：`python-tools/` 下按命名规范改名后迁入
 
 ---
 

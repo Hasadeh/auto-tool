@@ -1,0 +1,13 @@
+[project]
+name = "check-language-country-list"
+version = "0.1.0"
+description = "核对 OOBE 语言列表和国家列表"
+requires-python = ">=3.10"
+readme = "README.md"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -67,9 +67,12 @@ Thumbs.db
 # ---------- 数据与产物（工具仓只存代码与样例） ----------
 *.xlsx
 *.xls
+*.docx
 *.zip
 *.rar
 *.7z
+# 本工具自带基准 Excel 样例（非结果文件）
+!python-tools/check_language&country_list/语言列表和国家列表.xlsx
 backup/
 result/
 results/

@@ -1,0 +1,54 @@
+{
+  "project": "X1102D",
+  "package": "com.transsion.overlaysuw",
+  "screens": {
+    "oobe_language": {
+      "list_container_id": "com.transsion.overlaysuw:id/rv_language",
+      "item_text_id": "com.transsion.overlaysuw:id/language_name",
+      "next_button": {
+        "resource_id": "com.transsion.overlaysuw:id/suw_navbar_next",
+        "text": "下一步"
+      },
+      "wait_timeout": 15
+    },
+    "oobe_country": {
+      "list_container_id": "com.transsion.overlaysuw:id/rv_country",
+      "item_text_id": "com.transsion.overlaysuw:id/country_name",
+      "wait_timeout": 15
+    }
+  },
+  "skip_oobe": {
+    "need_root": true,
+    "commands": [
+      "settings put secure user_setup_complete 1",
+      "settings put global device_provisioned 1",
+      "settings put system system_locales en-US",
+      "input keyevent 4",
+      "am start -a android.intent.action.MAIN -c android.intent.category.HOME"
+    ]
+  },
+  "excel": {
+    "language_sheet": "语言列表",
+    "country_sheet": "国家列表",
+    "name_column": 1,
+    "result_column": 3
+  },
+  "colors": {
+    "存在": "00B050",
+    "不存在": "FF0000",
+    "多余": "FFFF00"
+  },
+  "swipe": {
+    "start_ratio": 0.65,
+    "end_ratio": 0.25,
+    "duration": 0.4,
+    "settle_seconds": 0.5,
+    "max_swipes": 100,
+    "no_new_limit": 2
+  },
+  "status_texts": {
+    "exist": "存在",
+    "missing": "不存在",
+    "extra": "多余"
+  }
+}

@@ -37,6 +37,12 @@ D:\auto-tool\
 
 目录放在对应语言分类下，例如：`python-tools/stability_Start-Log-Scan/`。
 
+## 已收录工具
+
+| 工具 | 说明 |
+|------|------|
+| [check_language&country_list](python-tools/check_language&country_list/) | OOBE/设置 语言与国家列表核对（与 Excel 基准比对） |
+
 ## 快速开始
 
 ```powershell
